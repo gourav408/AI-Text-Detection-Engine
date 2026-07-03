@@ -1,4 +1,4 @@
-# 🧠 AI Text Detection Engine
+# AI Text Detection Engine
 
 Classifying **AI-generated** vs **human-written** text with self-trained **Word2Vec** embeddings and two custom **Keras** models (a feed-forward ANN and a Bidirectional LSTM).
 
@@ -11,7 +11,7 @@ Classifying **AI-generated** vs **human-written** text with self-trained **Word2
 
 ---
 
-## 📌 Overview
+## Overview
 
 This project is an end-to-end NLP pipeline that takes raw text all the way to a working AI-text detector. It downloads a labelled human-vs-AI corpus, analyses the lexical fingerprints that separate the two classes, learns semantic embeddings, and trains and compares two deep-learning models under a **leakage-safe** evaluation protocol.
 
@@ -19,7 +19,7 @@ This project is an end-to-end NLP pipeline that takes raw text all the way to a 
 
 ---
 
-## 🏆 Results
+## Results
 
 | Model | Accuracy | ROC-AUC |
 |-------|:--------:|:-------:|
@@ -30,7 +30,7 @@ This project is an end-to-end NLP pipeline that takes raw text all the way to a 
 
 ---
 
-## 🔬 What it does — step by step
+## What it does — step by step
 
 | # | Step | What happens | Why it matters |
 |---|------|--------------|----------------|
@@ -46,7 +46,7 @@ This project is an end-to-end NLP pipeline that takes raw text all the way to a 
 
 ---
 
-## 🗂️ Project structure
+## Project structure
 
 ```
 .
@@ -56,7 +56,7 @@ This project is an end-to-end NLP pipeline that takes raw text all the way to a 
 
 ---
 
-## 🚀 Getting started
+## Getting started
 
 ### Option A — Google Colab (recommended)
 
@@ -89,7 +89,7 @@ Set `LOCAL_CSV` at the top of the data cell to a CSV with two columns — `text`
 
 ---
 
-## 🧩 How it works
+## How it works
 
 - **Embeddings.** A skip-gram Word2Vec model (100-dim) is trained on the training split only and used both to build mean-pooled document vectors (for the ANN) and to initialise the LSTM's embedding layer.
 - **Model A — ANN.** A compact fully-connected network over mean-pooled Word2Vec vectors. Fast, hard to overfit, and a strong baseline.
@@ -98,13 +98,13 @@ Set `LOCAL_CSV` at the top of the data cell to a CSV with two columns — `text`
 
 ---
 
-## 🛠️ Tech stack
+## Tech stack
 
 Python · TensorFlow / Keras · Gensim (Word2Vec) · scikit-learn · pandas · NumPy · Matplotlib · Seaborn
 
 ---
 
-## ⚠️ Limitations
+## Limitations
 
 - **Domain generalisation.** Trained on formal student essays, so it learns *this domain's* cues rather than a universal "AI-ness" signal. Very casual text (slang, chat, tweets) can be mislabelled — the notebook includes a deliberate out-of-domain stress test.
 - **No sentence-level features.** The source corpus arrives lower-cased and de-punctuated, so sentence-length style features are not recoverable; the analysis relies on word-level statistics.
@@ -112,7 +112,7 @@ Python · TensorFlow / Keras · Gensim (Word2Vec) · scikit-learn · pandas · N
 
 ---
 
-## 🔮 Future work
+## Future work
 
 - Swap Word2Vec for contextual embeddings (FastText or a Transformer such as DistilBERT).
 - Add an attention layer on top of the LSTM.
